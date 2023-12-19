@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+import { createPlugin } from "windy-radix-palette";
+
+const radixColors = createPlugin();
 
 const config: Config = {
   content: [
@@ -6,6 +9,8 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {},
-  plugins: [],
+  plugins: [radixColors.plugin],
+  darkMode: ["class"],
 };
+
 export default config;
