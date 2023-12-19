@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Permanent_Marker } from "next/font/google";
 import "./globals.css";
+import Header from "./header";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
+const permanentMarker = Permanent_Marker({
+  subsets: ["latin"],
+  variable: "--font-permanent-marker",
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Tatz & Pirz Studio",
@@ -18,7 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "bg-sage-2")}>{children}</body>
+      <body className={cn(inter.className, permanentMarker.variable)}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
