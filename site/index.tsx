@@ -1,10 +1,12 @@
 import { Metadata } from "next";
 
 export type SiteConfig = {
+  siteName: string;
   metadata: Metadata;
 };
 
 export const config: SiteConfig = {
+  siteName: "Tatz and Pirz Studio",
   metadata: {
     title: "Tatz and Pirz Studio",
     description:

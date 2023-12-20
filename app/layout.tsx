@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { createClient } from "@/prismicio";
 import { config } from "@/site";
+import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 const permanentMarker = Permanent_Marker({
@@ -42,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(inter.className, permanentMarker.variable)}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

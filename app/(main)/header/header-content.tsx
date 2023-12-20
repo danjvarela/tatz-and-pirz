@@ -6,8 +6,11 @@ import { useScreen } from "@/hooks/useScreen";
 import { useIsClient } from "usehooks-ts";
 import NavigationMenuMobile from "./navigation-menu-mobile";
 import Link from "next/link";
+import { useMetadata } from "@/hooks/useMetadata";
+import { config } from "@/site";
 
 export default function HeaderContent() {
+  const { data: metadata } = useMetadata();
   const { md } = useScreen();
   const isClient = useIsClient();
 
@@ -19,7 +22,7 @@ export default function HeaderContent() {
         href="/"
         className="font-accent text-base lg:text-xl whitespace-nowrap"
       >
-        Tatz & Pirz Studio
+        {metadata?.data.site_name || config.siteName}
       </Link>
       <NavigationMenu />
       <ContactUs />

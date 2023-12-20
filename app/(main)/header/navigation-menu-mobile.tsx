@@ -15,6 +15,8 @@ import { cn } from "@/lib/utils";
 import { isEmpty } from "lodash";
 import { ListItemProps, navigationItems } from "./navigation-items";
 import { useState } from "react";
+import { useMetadata } from "@/hooks/useMetadata";
+import { config } from "@/site";
 
 function ListItem({ href = "", title, subItems }: ListItemProps) {
   return isEmpty(subItems) ? (
@@ -55,6 +57,7 @@ function ListItem({ href = "", title, subItems }: ListItemProps) {
 }
 
 export default function NavigationMenuMobile() {
+  const { data: metadata } = useMetadata();
   const [value, setValue] = useState("");
   const isToggled = value === "toggled";
 
@@ -75,7 +78,7 @@ export default function NavigationMenuMobile() {
                 href="/"
                 title={
                   <span className="font-bold text-xl font-accent">
-                    Tatz & Pirz Studio
+                    {metadata?.data.site_name || config.siteName}
                   </span>
                 }
               />
