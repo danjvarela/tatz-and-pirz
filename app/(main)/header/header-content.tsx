@@ -1,6 +1,6 @@
 "use client";
 
-import ContactUs from "./contact-us";
+import ContactUs from "@/components/contact-us";
 import NavigationMenu from "./navigation-menu";
 import { useScreen } from "@/hooks/useScreen";
 import { useIsClient } from "usehooks-ts";

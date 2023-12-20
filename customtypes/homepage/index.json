@@ -5,12 +5,16 @@
   "repeatable": false,
   "status": true,
   "json": {
-    "Main": {
+    "Home": {
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "introduction": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

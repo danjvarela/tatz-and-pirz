@@ -1,9 +1,10 @@
-import Intro from "./intro";
+import { SliceZone } from "@prismicio/react";
+import { components } from "@/slices";
+import { createClient } from "@/prismicio";
 
-export default function Home() {
-  return (
-    <>
-      <Intro />
-    </>
-  );
+export default async function Home() {
+  const client = createClient();
+  const page = await client.getSingle("homepage");
+
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
