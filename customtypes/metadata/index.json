@@ -1,0 +1,69 @@
+{
+  "id": "metadata",
+  "label": "Metadata",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Metadata": {
+      "site_name": {
+        "type": "Text",
+        "config": {
+          "label": "Site Name",
+          "placeholder": "Brand name (Tatz and Pirz Studio)"
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "This will be the name of the tab"
+        }
+      },
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "Description",
+          "placeholder": "A description of the site"
+        }
+      },
+      "keywords": {
+        "type": "Group",
+        "config": {
+          "label": "Keywords",
+          "fields": {
+            "keyword": {
+              "type": "Text",
+              "config": {
+                "label": "Keyword",
+                "placeholder": "Keywords the search engine will use to index this website"
+              }
+            }
+          }
+        }
+      },
+      "opengraph_image": {
+        "type": "Image",
+        "config": {
+          "label": "Opengraph Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "opengraph_title": {
+        "type": "Text",
+        "config": {
+          "label": "Opengraph Title",
+          "placeholder": ""
+        }
+      },
+      "opengraph_description": {
+        "type": "Text",
+        "config": {
+          "label": "Opengraph Description",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { createClient } from "@/prismicio";
+import { config } from "@/site";
 
 const inter = Inter({ subsets: ["latin"] });
 const permanentMarker = Permanent_Marker({
@@ -10,11 +12,27 @@ const permanentMarker = Permanent_Marker({
   weight: "400",
 });
 
-export const metadata: Metadata = {
-  title: "Tatz & Pirz Studio",
-  description:
-    "Tatz & Pirz Studio, Experience the art of affordable elegance! Located at Guadalupe, Makati City",
-};
+const { metadata } = config;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const { data } = await client.getSingle("metadata");
+
+  return {
+    title: data.title || metadata.title,
+    description: data.description || metadata.description,
+    keywords:
+      data.keywords.map((item) => item.keyword).join(",") || metadata.keywords,
+    openGraph: {
+      title: data.opengraph_title || metadata.openGraph?.title,
+      description:
+        data.opengraph_description || metadata.openGraph?.description,
+      images: {
+        url: data.opengraph_image.url || metadata.openGraph?.url || "",
+      },
+    },
+  };
+}
 
 export default function RootLayout({
   children,
