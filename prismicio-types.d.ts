@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = IntroductionSlice;
+type HomepageDocumentDataSlicesSlice = AboutUsSlice | IntroductionSlice;
 
 /**
  * Content for Homepage documents
@@ -154,6 +154,71 @@ export type MetadataDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomepageDocument | MetadataDocument;
 
 /**
+ * Primary content in *AboutUs → Primary*
+ */
+export interface AboutUsSliceDefaultPrimary {
+  /**
+   * Title field in *AboutUs → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Content field in *AboutUs → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.primary.content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Image field in *AboutUs → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for AboutUs Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AboutUsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *AboutUs*
+ */
+type AboutUsSliceVariation = AboutUsSliceDefault;
+
+/**
+ * AboutUs Shared Slice
+ *
+ * - **API ID**: `about_us`
+ * - **Description**: AboutUs
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AboutUsSlice = prismic.SharedSlice<
+  "about_us",
+  AboutUsSliceVariation
+>;
+
+/**
  * Primary content in *Introduction → Primary*
  */
 export interface IntroductionSliceDefaultPrimary {
@@ -235,6 +300,10 @@ declare module "@prismicio/client" {
       MetadataDocumentData,
       MetadataDocumentDataKeywordsItem,
       AllDocumentTypes,
+      AboutUsSlice,
+      AboutUsSliceDefaultPrimary,
+      AboutUsSliceVariation,
+      AboutUsSliceDefault,
       IntroductionSlice,
       IntroductionSliceDefaultPrimary,
       IntroductionSliceVariation,

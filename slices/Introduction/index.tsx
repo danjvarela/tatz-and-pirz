@@ -5,14 +5,8 @@ import { SliceComponentProps } from "@prismicio/react";
 import mandala from "./assets/mandala.svg";
 import Image from "next/image";
 
-/**
- * Props for `Introduction`.
- */
 export type IntroductionProps = SliceComponentProps<Content.IntroductionSlice>;
 
-/**
- * Component for "Introduction" Slices.
- */
 const Introduction = ({ slice }: IntroductionProps): JSX.Element => {
   return (
     <section
